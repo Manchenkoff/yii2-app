@@ -1,0 +1,35 @@
+{
+  "name": "manchenkoff/yii2-app",
+  "description": "Yii 2 application template",
+  "keywords": [
+    "manchenkov",
+    "manchenkoff",
+    "yii2",
+    "framework"
+  ],
+  "homepage": "http://www.yiiframework.com/",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0.0",
+    "yiisoft/yii2": "~2.0",
+    "yiisoft/yii2-swiftmailer": "~2.1.0",
+    "yiisoft/yii2-bootstrap": "~2.1.0@dev"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "~2.0.0",
+    "yiisoft/yii2-gii": "~2.0.0"
+  },
+  "config": {
+    "process-timeout": 1800,
+    "fxp-asset": {
+      "enabled": false
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}

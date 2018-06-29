@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php ./bin/init --env=Production --overwrite=All

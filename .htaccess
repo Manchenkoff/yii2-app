@@ -1,0 +1,10 @@
+RewriteEngine on
+
+# Show Yii app checker by 'localhost/sysinfo' (DEVELOPMENT ONLY)
+
+#RewriteCond %{REQUEST_URI} ^/sysinfo
+#RewriteRule . bin/sysinfo.php
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rewrite all other requests to 'www' subdirectory
+RewriteRule ^(.+)?$ www/$1 [PT,L]
