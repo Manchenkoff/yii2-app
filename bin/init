@@ -120,28 +120,30 @@ function getFileList($root, $basePath = '') {
 
 function copyFile($root, $source, $target, &$all, $params) {
 
-    // Manchenkov: change '/web/' path
+    // Manchenkov: change '/web/' path to '/www/'
     if (preg_match("[web/]", $source)) {
-        $target = preg_replace("[(.*)/web/", 'app/$1/', $target);
+        $target = preg_replace("[(.*)/web/]", 'www/$1/', $target);
+        $target = preg_replace("[frontend/]", "", $target);
+
         $source = preg_replace('~^../~', '', $source);
     } else {
         $root = $root . '/app';
     }
 
     if (!is_file($root . '/' . $source)) {
-        echo "       skip $target ($source not exist)\n";
+        echo "skip $target ($source not exist)\n";
         return true;
     }
     if (is_file($root . '/' . $target)) {
         if (file_get_contents($root . '/' . $source) === file_get_contents($root . '/' . $target)) {
-            echo "  unchanged $target\n";
+            echo "unchanged $target\n";
             return true;
         }
         if ($all) {
-            echo "  overwrite $target\n";
+            echo "overwrite $target\n";
         } else {
-            echo "      exist $target\n";
-            echo "            ...overwrite? [Yes|No|All|Quit] ";
+            echo "exist $target\n";
+            echo "...overwrite? [Yes|No|All|Quit] ";
 
 
             $answer = !empty($params['overwrite']) ? $params['overwrite'] : trim(fgets(STDIN));
@@ -149,13 +151,13 @@ function copyFile($root, $source, $target, &$all, $params) {
                 return false;
             } else {
                 if (!strncasecmp($answer, 'y', 1)) {
-                    echo "  overwrite $target\n";
+                    echo "overwrite $target\n";
                 } else {
                     if (!strncasecmp($answer, 'a', 1)) {
-                        echo "  overwrite $target\n";
+                        echo "overwrite $target\n";
                         $all = true;
                     } else {
-                        echo "       skip $target\n";
+                        echo "skip $target\n";
                         return true;
                     }
                 }
