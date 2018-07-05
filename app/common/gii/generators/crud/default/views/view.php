@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'method' => 'post',
                 ],
             ]) ?>
+            <?= "<?= "?>Html::a(Yii::t('app', 'Close'), ["/{$this->context->id}"], ['class' => 'btn btn-info']) ?>
         </div>
     </div>
 
